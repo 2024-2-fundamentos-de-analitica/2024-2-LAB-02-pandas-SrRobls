@@ -5,6 +5,7 @@ datos requeridos se encuentran en los archivos `tbl0.tsv`, `tbl1.tsv` y
 librerias de pandas para resolver las preguntas.
 """
 
+import pandas as pd
 
 def pregunta_06():
     """
@@ -15,3 +16,13 @@ def pregunta_06():
     ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 
     """
+
+    ruta = "./files/input/tbl1.tsv"
+    df = pd.read_csv(ruta, sep='\t')
+
+    # Seleccionamos la columna c4 y con ek metodo sort_values() ordenamos, luego lo pasamos a str con su metodo upper para las mayusculas y por ultimo sacamos el unique para qye nos retorne los valores unicos sin repetir
+    valores_unicos_c4 = list(df['c4'].sort_values().str.upper().unique())
+
+    return valores_unicos_c4
+
+print(pregunta_06())

@@ -5,6 +5,7 @@ datos requeridos se encuentran en los archivos `tbl0.tsv`, `tbl1.tsv` y
 librerias de pandas para resolver las preguntas.
 """
 
+import pandas as pd
 
 def pregunta_11():
     """
@@ -22,3 +23,14 @@ def pregunta_11():
     38   38      d,e
     39   39    a,d,f
     """
+
+    df = pd.read_csv('./files/input/tbl1.tsv', sep='\t')
+
+     # Usamos apply para lambda para aplicar en cada fila del c4 con la agrupacion de c0 un join para que me de la fila con el fomrato deseado
+     # luego usamos un reset_index vacion para crear una nueva columna con un nuevo indice
+    table = df.groupby('c0')['c4'].apply(lambda x: ','.join(map(str, sorted(x)))).reset_index()
+    return table
+
+print()
+
+print(pregunta_11())

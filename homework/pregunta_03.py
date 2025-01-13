@@ -5,6 +5,7 @@ datos requeridos se encuentran en los archivos `tbl0.tsv`, `tbl1.tsv` y
 librerias de pandas para resolver las preguntas.
 """
 
+import pandas as pd
 
 def pregunta_03():
     """
@@ -21,3 +22,14 @@ def pregunta_03():
     Name: count, dtype: int64
 
     """
+    ruta = "./files/input/tbl0.tsv"
+    df = pd.read_csv(ruta, sep='\t')
+
+    # con group by agrupo por la columna que quiero y con sie saco el total de registros con este agrupacion
+    columna = df.groupby('c1').size()
+
+    return columna
+
+print(pregunta_03())
+
+

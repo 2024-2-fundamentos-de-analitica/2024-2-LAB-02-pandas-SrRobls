@@ -4,7 +4,7 @@ datos requeridos se encuentran en los archivos `tbl0.tsv`, `tbl1.tsv` y
 `tbl2.tsv`. En este laboratorio solo puede utilizar las funciones y 
 librerias de pandas para resolver las preguntas.
 """
-
+import pandas as pd
 
 def pregunta_04():
     """
@@ -20,3 +20,14 @@ def pregunta_04():
     E    4.785714
     Name: c2, dtype: float64
     """
+
+    ruta = "./files/input/tbl0.tsv"
+    df = pd.read_csv(ruta, sep='\t')
+
+    # Agrupamos cpor c1 y luego seleccionamos la columna c2 y sacamos el promedio
+    mean_c2_by_c2 = df.groupby('c1')['c2'].mean()
+
+    return mean_c2_by_c2
+
+
+print(pregunta_04())

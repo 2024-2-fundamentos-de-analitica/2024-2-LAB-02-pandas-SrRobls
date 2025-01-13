@@ -5,6 +5,7 @@ datos requeridos se encuentran en los archivos `tbl0.tsv`, `tbl1.tsv` y
 librerias de pandas para resolver las preguntas.
 """
 
+import pandas as pd
 
 def pregunta_02():
     """
@@ -14,3 +15,14 @@ def pregunta_02():
     4
 
     """
+
+    ruta = "./files/input/tbl0.tsv"
+
+    df = pd.read_csv(ruta, sep='\t')
+
+    # con sahpe puedo ver el numeor de filas y columnas
+    num_column = df.shape[1]
+
+    return num_column
+
+print(pregunta_02())
